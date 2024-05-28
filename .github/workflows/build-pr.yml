@@ -21,7 +21,7 @@ jobs:
       
       - name: Go version
         run: go version
-        
+
       - name: Lint
         run: go get -u golang.org/x/lint/golint
     
