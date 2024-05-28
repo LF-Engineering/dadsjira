@@ -48,9 +48,9 @@ usedexports: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES
 	${GO_USEDEXPORTS} ./...
 
 errcheck: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
-	${GO_ERRCHECK} ./...
 	go install github.com/kisielk/errcheck
-
+	${GO_ERRCHECK} ./...
+	
 test:
 	go test -v $(PKG_LIST)
 
