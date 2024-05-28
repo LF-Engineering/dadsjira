@@ -40,13 +40,16 @@ vet: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
 	go vet $(PKG_LIST)
 
 imports: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
+	go install golang.org/x/tools/cmd/goimports
 	./scripts/for_each_go_file.sh "${GO_IMPORTS}"
 
 usedexports: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
+	go install github.com/jgautheron/usedexports
 	${GO_USEDEXPORTS} ./...
 
 errcheck: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
 	${GO_ERRCHECK} ./...
+	go install github.com/kisielk/errcheck
 
 test:
 	go test -v $(PKG_LIST)
