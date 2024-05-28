@@ -36,7 +36,7 @@ func GetEnrollments(auth0ClientProvider Auth0Client, httpClientProvider HTTPClie
 	if projectSlug == "" {
 		projectSlug = " "
 	}
-	URL := fmt.Sprintf("%s/affiliation/%s/both/%s/%s", AffBaseURL, projectSlug, uuid, date.Format("2006-02-01 15:04:05"))
+	URL := fmt.Sprintf("%s/affiliation/%s/both/%s/%s", AffBaseURL, projectSlug, uuid, date.Format("2006-01-02 15:04:05"))
 	token, err := auth0ClientProvider.GetToken()
 	if err != nil {
 		return "", []string{}, err
