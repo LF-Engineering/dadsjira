@@ -33,20 +33,24 @@ fmt: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
 	./scripts/for_each_go_file.sh "${GO_FMT}"
 
 lint: ## Lint the files
+	go install golang.org/x/lint/golint
 	golint -set_exit_status $(PKG_LIST)
 
 vet: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
 	go vet $(PKG_LIST)
 
 imports: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
+	go install golang.org/x/tools/cmd/goimports
 	./scripts/for_each_go_file.sh "${GO_IMPORTS}"
 
 usedexports: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
+	go install github.com/jgautheron/usedexports
 	${GO_USEDEXPORTS} ./...
 
 errcheck: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
+	go install github.com/kisielk/errcheck
 	${GO_ERRCHECK} ./...
-
+	
 test:
 	go test -v $(PKG_LIST)
 
