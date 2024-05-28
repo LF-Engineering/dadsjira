@@ -33,7 +33,7 @@ fmt: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
 	./scripts/for_each_go_file.sh "${GO_FMT}"
 
 lint: ## Lint the files
-    go get -u golang.org/x/lint/golint
+	go get -u golang.org/x/lint/golint
 	golint -set_exit_status $(PKG_LIST)
 
 vet: ${GO_BIN_FILES} ${GO_LIB_FILES} ${GO_TEST_FILES} ${GO_LIBTEST_FILES}
