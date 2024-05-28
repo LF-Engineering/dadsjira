@@ -21,9 +21,9 @@ jobs:
       
       - name: Go version
         run: go version
-      
+        
       - name: Lint
-        run: go get -u golang.org/x/lint/golint || true
+        run: go get -u golang.org/x/lint/golint
     
       - name: Imports
         run: go get golang.org/x/tools/cmd/goimports
